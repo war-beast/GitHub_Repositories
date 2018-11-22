@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">GitHubRepos</string>
-  <string name="drawer_open">Open</string>
-  <string name="drawer_close">Close</string>
-  <string name="menu_refresh">Refresh</string>
-  <string name="fragment1">You are on Fragment 1</string>
-  <string name="fragment2">You are on Fragment 2</string>
+  <string name="app_name">Test API GitHup</string>
+  <string name="nav_home">Home</string>
+  <string name="nav_settings">Settings</string>
+  <string name="nav_exit">Exit</string>
+  <string name="repo_name">Repository name: </string>
+  <string name="repo_owner">Owner name: </string>
+  <string name="repo_short_description">Short description: </string>
+  <string name="repo_url">Repository url: </string>
+  <string name="repo_language">Coding language: </string>
+  <string name="repo_stars">Stars count: </string>
+  <string name="repo_watchers">Watchers count: </string>
+  <string name="repo_fork_count">Forks count: </string>
+  <string name="repo_issue_count">Issues count: </string>
 </resources>

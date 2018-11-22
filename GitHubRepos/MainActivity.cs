@@ -51,11 +51,14 @@ namespace GitHubRepos
 
                 switch (e.MenuItem.ItemId)
                 {
-                    case Resource.Id.nav_home_1:
+                    case Resource.Id.nav_home:
                         ListItemClicked(0);
                         break;
-                    case Resource.Id.nav_home_2:
-                        ListItemClicked(1);
+                    case Resource.Id.nav_settings:
+                        //ListItemClicked(1);
+                        break;
+                    case Resource.Id.nav_exit:
+                        this.Finish();
                         break;
                 }
 
@@ -67,7 +70,7 @@ namespace GitHubRepos
             //if first time you will want to go ahead and click first item.
             if (savedInstanceState == null)
             {
-                navigationView.SetCheckedItem(Resource.Id.nav_home_1);
+                navigationView.SetCheckedItem(Resource.Id.nav_home);
                 ListItemClicked(0);
             }
         }
@@ -85,10 +88,10 @@ namespace GitHubRepos
             switch (position)
             {
                 case 0:
-                    fragment = Fragment1.NewInstance();
+                    fragment = HomeFragemnt.NewInstance();
                     break;
                 case 1:
-                    fragment = Fragment2.NewInstance();
+                    fragment = SettingsFragment.NewInstance();
                     break;
             }
 
@@ -106,6 +109,18 @@ namespace GitHubRepos
                     return true;
             }
             return base.OnOptionsItemSelected(item);
+        }
+
+        public override void OnBackPressed()
+        {
+            if (SupportFragmentManager.BackStackEntryCount != 0)
+            {
+                SupportFragmentManager.PopBackStack();
+            }
+            else
+            {
+                base.OnBackPressed();
+            }
         }
     }
 }

@@ -3,26 +3,17 @@
 
   <group android:checkableBehavior="single">
     <item
-        android:id="@+id/nav_home_1"
+        android:id="@+id/nav_home"
         android:icon="@drawable/ic_home_1"
-        android:title="Home 1" />
+        android:title="@string/nav_home" />
     <item
-        android:id="@+id/nav_home_2"
-        android:icon="@drawable/ic_home_2"
-        android:title="Home 2" />
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings_grey600_24dp"
+        android:title="@string/nav_settings" />
   </group>
 
-  <item android:title="Sub items">
-    <menu>
-      <item
-          android:icon="@drawable/ic_home_1"
-          android:title="Sub item 1" 
-          android:checkable="true" />
-      <item
-          android:icon="@drawable/ic_home_2"
-          android:title="Sub item 2"
-          android:checkable="true"  />
-    </menu>
-  </item>
-
+  <item
+        android:id="@+id/nav_exit"
+        android:icon="@drawable/ic_exit_to_app_grey600_24dp"
+        android:title="@string/nav_exit" />
 </menu>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="app_name">Тест API GitHup</string>
+  <string name="nav_home">Главная</string>
+  <string name="nav_settings">Настройки</string>
+  <string name="nav_exit">Выход</string>
+  <string name="repo_name">Название репозитория: </string>
+  <string name="repo_owner">Имя владельца: </string>
+  <string name="repo_short_description">Краткое описание: </string>
+  <string name="repo_url">Cсылка на репозиторий: </string>
+  <string name="repo_language">Основной язык кода: </string>
+  <string name="repo_stars">Количество звезд: </string>
+  <string name="repo_watchers">Количество следящих: </string>
+  <string name="repo_fork_count">Число ветвей (forks): </string>
+  <string name="repo_issue_count">Число открытых ошибок: </string>
+</resources>
