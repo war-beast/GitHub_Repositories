@@ -8,6 +8,7 @@ using Android.Widget;
 using GitHubRepos.Adapters;
 using GitHubRepos.Common;
 using GitHubRepos.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -42,8 +43,24 @@ namespace GitHubRepos.Fragments
             return fragment;
         }
 
+        public override void OnSaveInstanceState(Bundle outState)
+        {
+            string serializedRepository = JsonConvert.SerializeObject(repository);
+            outState.PutString("repository", serializedRepository);
+
+            // always call the base implementation!
+            base.OnSaveInstanceState(outState);
+        }
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
+            if (repository == null && savedInstanceState != null) {
+                string savedString = savedInstanceState.GetString("repository", "{}");
+                repository = JsonConvert.DeserializeObject<GitRepository>(savedString);
+            }
+
+            repository = repository ?? new GitRepository();
+
             var summary = Task.Run(async () =>
             {
                 var apiReader = new GitApiReader();

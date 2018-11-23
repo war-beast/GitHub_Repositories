@@ -10,15 +10,15 @@ namespace GitHubRepos.Models
         [JsonProperty]
         public int id { get; set; }
         [JsonProperty]
-        public string name { get; set; }
+        public string name { get; set; } = "";
         [JsonProperty]
-        public string full_name { get; set; }
+        public string full_name { get; set; } = "";
         [JsonProperty]
-        public Owner owner { get; set; }
+        public Owner owner { get; set; } = new Owner();
         [JsonProperty]
-        public string description { get; set; }
+        public string description { get; set; } = "";
         [JsonProperty]
-        public string url { get; set; }
+        public string url { get; set; } = "";
     }
 
     [JsonObject(MemberSerialization.OptIn)]
