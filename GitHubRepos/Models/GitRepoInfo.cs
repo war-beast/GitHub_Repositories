@@ -41,5 +41,7 @@ namespace GitHubRepos.Models
         public int watchers_count { get; set; }
         [JsonProperty]
         public int forks_count { get; set; }
+        [JsonProperty]
+        public int open_issues_count { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 using Android.App;
@@ -12,6 +13,7 @@ using Android.Runtime;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
+using GitHubRepos.Common;
 using GitHubRepos.Models;
 
 namespace GitHubRepos.Adapters
@@ -52,25 +54,21 @@ namespace GitHubRepos.Adapters
                 vh.ownerNameView.Text = Repositories[position].owner.login;
                 vh.repoDescView.Text = Repositories[position].description;
                 vh.repoUrlView.Text = Repositories[position].url;
-                vh.ownerAvatarView.SetImageURI(Android.Net.Uri.Parse(Repositories[position].owner.avatar_url));
+
+                using (var avatarLoadr = new ImageLoader())
+                {
+                    var imageBitmap = avatarLoadr.GetImageBitmapFromUrl(Repositories[position].owner.avatar_url);
+                    if (imageBitmap != null)
+                        vh.ownerAvatarView.SetImageBitmap(imageBitmap);
+                }
             }
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             View itemView = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.gitRepoItemView, parent, false);
-            GitRepoViewHolder vh = new GitRepoViewHolder(itemView);
+            GitRepoViewHolder vh = new GitRepoViewHolder(itemView, OnClick);
             return vh;
-        }
-
-        private void SetImage(string filePath, ImageView image)
-        {
-            int height = image.Height;
-            int width = image.Width;
-
-            //Bitmap bmp = Bitmap.CreateBitmap(;
-            //image.SetImageBitmap(bmp);
-            //bmp.Dispose();
         }
     }
 }

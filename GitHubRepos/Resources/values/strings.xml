@@ -13,4 +13,5 @@
   <string name="repo_watchers">Watchers count: </string>
   <string name="repo_fork_count">Forks count: </string>
   <string name="repo_issue_count">Issues count: </string>
+  <string name="api_loading_error">Data loading error, check internet connection.</string>
 </resources>

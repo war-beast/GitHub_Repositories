@@ -14,13 +14,14 @@ namespace GitHubRepos
         public ImageView ownerAvatarView { get; private set; }
         public LinearLayout cardLayout { get; private set; }
 
-        public GitRepoViewHolder(View itemView) : base(itemView) {
+        public GitRepoViewHolder(View itemView, System.Action<int> listener) : base(itemView) {
             repoNameView = itemView.FindViewById<TextView>(Resource.Id.repoNameView);
             ownerNameView = itemView.FindViewById<TextView>(Resource.Id.ownerNameView);
             repoDescView = itemView.FindViewById<TextView>(Resource.Id.repoDescView);
             repoUrlView = itemView.FindViewById<TextView>(Resource.Id.repoUrlView);
             ownerAvatarView = itemView.FindViewById<ImageView>(Resource.Id.ownerAvatarView);
-            //cardLayout = itemView.FindViewById<LinearLayout>(Resource.Id.)
+
+            itemView.Click += (sender, e) => listener(base.LayoutPosition);
         }
     }
 }

@@ -48,7 +48,6 @@ namespace GitHubRepos
                     catch (Exception ex)
                     {
                         string msg = ex.Message;
-                        throw (ex);
                     }
                 }
 
@@ -72,6 +71,7 @@ namespace GitHubRepos
                     try
                     {
                         apiData = web.DownloadString(url);
+                        retVal = JsonConvert.DeserializeObject<GitRepoSummary>(apiData);
                     }
                     catch (Exception)
                     {
@@ -79,7 +79,6 @@ namespace GitHubRepos
                     }
                 }
 
-                retVal = JsonConvert.DeserializeObject<GitRepoSummary>(apiData);
                 return retVal;
             });
         }

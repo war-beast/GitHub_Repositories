@@ -11,7 +11,7 @@ using Android.Support.Design.Widget;
 
 namespace GitHubRepos
 {
-    [Activity(Label = "@string/app_name", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/Icon")]
+    [Activity(Label = "@string/app_name", MainLauncher = false, LaunchMode = LaunchMode.SingleTop, Icon = "@drawable/Icon", ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
 
@@ -88,7 +88,7 @@ namespace GitHubRepos
             switch (position)
             {
                 case 0:
-                    fragment = HomeFragemnt.NewInstance();
+                    fragment = HomeFragemnt.NewInstance(SupportFragmentManager);
                     break;
                 case 1:
                     fragment = SettingsFragment.NewInstance();

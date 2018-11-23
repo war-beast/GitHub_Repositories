@@ -13,4 +13,5 @@
   <string name="repo_watchers">Количество следящих: </string>
   <string name="repo_fork_count">Число ветвей (forks): </string>
   <string name="repo_issue_count">Число открытых ошибок: </string>
+  <string name="api_loading_error">Не удалось загрузить данные, проверьте подключение к интернету.</string>
 </resources>

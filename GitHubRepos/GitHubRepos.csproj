@@ -104,6 +104,8 @@
     <Compile Include="Adapters\RepositoryListAdapter.cs" />
     <Compile Include="Common\AppSettings.cs" />
     <Compile Include="Common\GitApiReader.cs" />
+    <Compile Include="Common\ImageLoader.cs" />
+    <Compile Include="Fragments\SummaryFragment.cs" />
     <Compile Include="GitRepoViewHolder.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Fragments\HomeFragment.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Models\GitRepoInfo.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -166,6 +169,11 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\drawable\octocit.png" />
     <AndroidResource Include="Resources\layout\gitRepoItemView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+    <AndroidResource Include="Resources\layout\summaryFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
