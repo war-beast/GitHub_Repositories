@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">Test API GitHup</string>
+  <string name="app_name">Test API GitHub</string>
   <string name="nav_home">Home</string>
   <string name="nav_settings">Settings</string>
   <string name="nav_exit">Exit</string>

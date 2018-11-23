@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <string name="app_name">Тест API GitHup</string>
+  <string name="app_name">Тест API GitHub</string>
   <string name="nav_home">Главная</string>
   <string name="nav_settings">Настройки</string>
   <string name="nav_exit">Выход</string>
