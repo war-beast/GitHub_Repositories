@@ -59,7 +59,7 @@ namespace GitHubRepos
         {
             return await Task.Run(() =>
             {
-                var retVal = new GitRepoSummary();
+                GitRepoSummary retVal = null;
                 string apiData = "";
 
                 using (WebClient web = new WebClient())

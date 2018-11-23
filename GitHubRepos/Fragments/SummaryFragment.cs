@@ -44,19 +44,23 @@ namespace GitHubRepos.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            var summary = Task.Run(async () => {
+            var summary = Task.Run(async () =>
+            {
                 var apiReader = new GitApiReader();
                 var info = await apiReader.GitRepoSummary(repository.full_name);
-                if(info == null)
+                if (info == null)
                 {
                     Resources res = Activity.BaseContext.Resources;
-                    Toast alert = Toast.MakeText(Activity.BaseContext, res.GetString(Resource.String.api_loading_error), ToastLength.Long);
-                    alert.SetGravity(GravityFlags.Center, 0, 0);
-                    alert.Show();
+                    Activity.RunOnUiThread(() =>
+                    {
+                        Toast alert = Toast.MakeText(Activity.BaseContext, res.GetString(Resource.String.api_loading_error), ToastLength.Long);
+                        alert.SetGravity(GravityFlags.Center, 0, 0);
+                        alert.Show();
+                    });
                 }
                 return info;
             }).Result;
-            
+
             fragmentView = inflater.Inflate(Resource.Layout.summaryFragment, container, false);
             repoNameViewSum = fragmentView.FindViewById<TextView>(Resource.Id.repoNameViewSum);
             ownerNameViewSum = fragmentView.FindViewById<TextView>(Resource.Id.ownerNameViewSum);
@@ -79,11 +83,14 @@ namespace GitHubRepos.Fragments
                 if (imageBitmap != null)
                     ownerAvatarViewSum.SetImageBitmap(imageBitmap);
             }
-            repoLanguage.Text = summary.language;
-            repoStargazers.Text = summary.stargazers_count.ToString();
-            repoWatchers.Text = summary.watchers_count.ToString();
-            repoForkCount.Text = summary.forks_count.ToString();
-            repoOpenIssues.Text = summary.open_issues_count.ToString();
+            if (summary != null)
+            {
+                repoLanguage.Text = summary.language;
+                repoStargazers.Text = summary.stargazers_count.ToString();
+                repoWatchers.Text = summary.watchers_count.ToString();
+                repoForkCount.Text = summary.forks_count.ToString();
+                repoOpenIssues.Text = summary.open_issues_count.ToString();
+            }
 
             return fragmentView;
         }

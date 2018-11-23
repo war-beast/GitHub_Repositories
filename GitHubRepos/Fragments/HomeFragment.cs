@@ -45,11 +45,14 @@ namespace GitHubRepos.Fragments
                 var apiReader = new GitApiReader();
                 var items = new List<GitRepository>();
                 items = await apiReader.GetRepositories();
-                if (items == null) {
+                if ((int)items.Count == 0) {
                     Resources res = Activity.BaseContext.Resources;
-                    Toast alert = Toast.MakeText(Activity.BaseContext, res.GetString(Resource.String.api_loading_error), ToastLength.Long);
-                    alert.SetGravity(GravityFlags.Center, 0, 0);
-                    alert.Show();
+                    Activity.RunOnUiThread(() =>
+                    {
+                        Toast alert = Toast.MakeText(Activity.BaseContext, res.GetString(Resource.String.api_loading_error), ToastLength.Long);
+                        alert.SetGravity(GravityFlags.Center, 0, 0);
+                        alert.Show();
+                    });
                 }
                 return items;
             }).ContinueWith(FillRecycler);
@@ -64,10 +67,13 @@ namespace GitHubRepos.Fragments
         {
             Activity.RunOnUiThread(() =>
             {
-                repositories = obj.Result;
-                adapter = new RepositoryListAdapter(Activity.BaseContext, repositories);
-                recyclerView.SetAdapter(adapter);
-                adapter.ItemClick += Adapter_ItemClick;
+                if (!obj.IsFaulted)
+                {
+                    repositories = obj.Result;
+                    adapter = new RepositoryListAdapter(Activity.BaseContext, repositories);
+                    recyclerView.SetAdapter(adapter);
+                    adapter.ItemClick += Adapter_ItemClick;
+                }
                 repositoriesLoadingProgress.Visibility = ViewStates.Gone;
             });
         }

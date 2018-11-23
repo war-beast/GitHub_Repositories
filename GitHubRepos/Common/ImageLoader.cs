@@ -25,7 +25,8 @@ namespace GitHubRepos.Common
 
         public void Dispose()
         {
-            imageBitmap.Dispose();
+            if(imageBitmap != null)
+                imageBitmap.Dispose();
         }
 
         public Bitmap GetImageBitmapFromUrl(string url)
